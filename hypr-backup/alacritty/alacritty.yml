@@ -1,0 +1,30 @@
+cursor:
+  # Cursor style
+  style:
+    # Cursor shape
+    #
+    # Values for `shape`:
+    #   - ▇ Block
+    #   - _ Underline
+    #   - | Beam
+    shape: Beam
+
+    # Cursor blinking state
+    #
+    # Values for `blinking`:
+    #   - Never: Prevent the cursor from ever blinking
+    #   - Off: Disable blinking by default
+    #   - On: Enable blinking by default
+    #   - Always: Force the cursor to always blink
+    blinking: On
+font:
+  normal:
+    family: "JetBrainsMono Nerd Font"
+    style: Regular
+  bold:
+    family: "JetBrainsMono Nerd Font"
+    style: Bold
+  italic:
+    family: "JetBrainsMono Nerd Font"
+    style: Italic
+  size: 50.0

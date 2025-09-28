@@ -1,0 +1,139 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "height": 60,
+  "spacing": 1,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["mpris"],
+  "modules-right": [
+    "battery",  // Добавлено сюда
+    "cpu",
+    "memory", 
+    "pulseaudio",
+    "clock",
+    "clock#simpleclock",
+    "tray",
+    "custom/notification",
+    "custom/power"
+  ],
+
+
+  "battery": {
+    "bat": "BAT0",  // или попробуйте "BAT1"
+    "interval": 30,
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-full": " Full",
+    "format-plugged": " {capacity}%",
+    "format-icons": [
+      "",  // 0-20%
+      "",  // 20-40%
+      "",  // 40-60%
+      "",  // 60-80%
+      ""   // 80-100%
+    ],
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "tooltip": false
+  },
+
+  "custom/spotify": {
+    "format": "  {}",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "spotifatius toggle-liked",
+    "on-click-middle": "playerctl -p spotify next",
+    "exec": "spotifatius monitor",
+  },
+  "mpris": {
+    "player": "spotify",
+    "dynamic-order": ["artist", "title"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "status-icons": {
+      "paused": "",
+    },
+    "player-icons": {
+      "default": "",
+    },
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false,
+  },
+  "hyprland/window": {
+    "format": "",
+  },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10,
+  },
+  "clock#simpleclock": {
+    "tooltip": false,
+    "format": " {:%H:%M:%S}",
+  },
+  "clock": {
+    "format": " {:L%a %d %b}",
+    "calendar": {
+      "format": {
+        "days": "<span weight='normal'>{}</span>",
+        "months": "<span color='#cdd6f4'><b>{}</b></span>",
+        "today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
+      },
+      "mode": "month",
+      "mode-mon-col": 1,
+      "on-scroll": 1,
+    },
+    "tooltip-format": "<span color='#cdd6f4' font='Lexend 16'><tt><small>{calendar}</small></tt></span>",
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": true,
+    "interval": 1,
+  },
+  "memory": {
+    "format": " {used:0.1f}Gi",
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "  muted",
+    "format-icons": {
+      "headphone": "",
+      "default": [" ", " ", " "],
+    },
+    "on-click": "pavucontrol",
+  },
+  "custom/sep": {
+    "format": "|",
+    "tooltip": false,
+  },
+  "custom/power": {
+    "tooltip": false,
+    "on-click": "wlogout -p layer-shell &",
+    "format": "⏻",
+  },
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟",
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false,
+  },
+}
