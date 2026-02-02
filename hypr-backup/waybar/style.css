@@ -1,0 +1,178 @@
+* {
+  min-height: 0;
+  min-width: 0;
+  font-family: Lexend, "JetBrainsMono NFP";
+  font-size: 16px;
+  font-weight: 600;
+}
+
+window#waybar {
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  background-color: #11111b;
+}
+
+/* Workspaces */
+#workspaces button {
+  padding: 0.3rem 0.6rem;
+  margin: 0.4rem 0.25rem;
+  border-radius: 6px;
+  background-color: #1e1e2e;
+  color: #cdd6f4;
+}
+
+#workspaces button:hover {
+  color: #1e1e2e;
+  background-color: #cdd6f4;
+}
+
+#workspaces button.active {
+  background-color: #1e1e2e;
+  color: #89b4fa;
+}
+
+#workspaces button.urgent {
+  background-color: #1e1e2e;
+  color: #f38ba8;
+}
+
+/* Common modules */
+#clock,
+#pulseaudio,
+#custom-logo,
+#custom-power,
+#custom-spotify,
+#custom-notification,
+#cpu,
+#tray,
+#memory,
+#window,
+#mpris,
+#battery {
+  padding: 0.3rem 0.6rem;
+  margin: 0.4rem 0.25rem;
+  border-radius: 6px;
+  background-color: #1e1e2e;
+}
+
+/* Power button */
+#custom-power {
+  color: #f38ba8;
+  transition: all 0.2s ease;
+}
+
+#custom-power:hover {
+  background-color: #f38ba8;
+  color: #1e1e2e;
+}
+
+/* MPRIS */
+#mpris.playing {
+  color: #a6e3a1;
+}
+
+#mpris.paused {
+  color: #9399b2;
+}
+
+#custom-sep {
+  padding: 0px;
+  color: #585b70;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
+}
+
+/* CPU, Memory, Clock */
+#cpu {
+  color: #94e2d5;
+}
+
+#memory {
+  color: #cba6f7;
+}
+
+#clock {
+  color: #74c7ec;
+}
+
+#clock.simpleclock {
+  color: #89b4fa;
+}
+
+#window {
+  color: #cdd6f4;
+}
+
+/* PulseAudio */
+#pulseaudio {
+  color: #b4befe;
+}
+
+#pulseaudio.muted {
+  color: #a6adc8;
+}
+
+#custom-logo {
+  color: #89b4fa;
+}
+
+/* Battery */
+#battery {
+  color: #f9e2af;
+}
+
+#battery.charging {
+  color: #a6e3a1;
+}
+
+#battery.full {
+  color: #a6e3a1;
+}
+
+#battery.warning {
+  color: #fab387;
+}
+
+#battery.critical {
+  color: #f38ba8;
+}
+
+/* Temperature */
+#temperature {
+  color: #f5c2e7;
+  padding: 0.3rem 0.6rem;
+  margin: 0.4rem 0.25rem;
+  border-radius: 6px;
+  background-color: #1e1e2e;
+}
+
+#temperature.critical {
+  color: #f38ba8;
+}
+
+/* Notification */
+#custom-notification {
+  color: #cdd6f4;
+}
+
+#custom-notification:hover {
+  background-color: #89b4fa;
+  color: #1e1e2e;
+}
+
+/* Tooltip */
+tooltip {
+  background-color: #181825;
+  border: 2px solid #89b4fa;
+  border-radius: 6px;
+  color: #cdd6f4;
+  font-family: Lexend, "JetBrainsMono NFP";
+  font-size: 14px;
+}
+
+tooltip * {
+  background-color: transparent;
+  font-size: 14px;
+}

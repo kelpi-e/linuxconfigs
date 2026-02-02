@@ -1,0 +1,153 @@
+{
+  "layer": "bottom",
+  "position": "top",
+  "height": 60,
+  "spacing": 1,
+  "exclusive": true,
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["mpris"],
+  "modules-right": [
+    "battery",
+    "cpu",
+    "memory", 
+    "temperature",
+    "pulseaudio",
+    "clock",
+    "clock#simpleclock",
+    "tray",
+    "custom/notification",
+    "custom/power"
+  ],
+
+  "battery": {
+    "bat": "BAT0", 
+    "interval": 30,
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-full": " Full",
+    "format-plugged": " {capacity}%", 
+    "format-icons": ["", "", "", "", ""],
+    "states": {
+        "warning": 20,
+        "critical": 10
+    },
+    "tooltip": true,
+    "tooltip-format": "{timeTo}\nСonsumption: {power:.2f}W",
+    "tooltip-format-charging": "{timeTo}\nPower: {power:.2f}W"
+  },
+
+  "temperature": {
+    "thermal-zone": 0,
+    "format": " {temperatureC}°C",
+    "format-critical": " {temperatureC}°C",
+    "critical-threshold": 80,
+    "interval": 5,
+    "tooltip": false
+  },
+
+  "custom/spotify": {
+    "format": "  {}",
+    "return-type": "json",
+    "on-click": "playerctl -p spotify play-pause",
+    "on-click-right": "spotifatius toggle-liked",
+    "on-click-middle": "playerctl -p spotify next",
+    "exec": "spotifatius monitor"
+  },
+  
+  "mpris": {
+    "player": "spotify",
+    "dynamic-order": ["artist", "title"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "status-icons": {
+      "paused": ""
+    },
+    "player-icons": {
+      "default": ""
+    }
+  },
+  
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false
+  },
+  
+  "hyprland/window": {
+    "format": ""
+  },
+  
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 10
+  },
+  
+  "clock#simpleclock": {
+    "tooltip": false,
+    "format": " {:%H:%M:%S}",
+    "interval": 1
+  },
+  
+  "clock": {
+    "format": " {:L%a %d %b}",
+    "calendar": {
+      "format": {
+        "days": "<span weight='normal'>{}</span>",
+        "months": "<span color='#cdd6f4'><b>{}</b></span>",
+        "today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
+        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
+        "weeks": "<span color='#a6e3a1'><b>W{}</b></span>"
+      },
+      "mode": "month",
+      "mode-mon-col": 1,
+      "on-scroll": 1
+    },
+    "tooltip-format": "<span color='#cdd6f4' font='Lexend 16'><tt><small>{calendar}</small></tt></span>"
+  },
+  
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": true,
+    "interval": 1
+  },
+  
+  "memory": {
+    "format": " {used:0.2f}Gi"
+  },
+  
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "  muted",
+    "format-icons": {
+      "headphone": "",
+      "default": [" ", " ", " "]
+    },
+    "on-click": "pavucontrol"
+  },
+  
+"custom/power": {
+  "tooltip": false,
+  "on-click": "bash -c 'choice=$(echo -e \"⏻ Shutdown\\n Reboot\\n󰤄 Sleep\\n󰋊 Hibernate\" | wofi --dmenu --width=250 --height=230 --hide-search --location=top_right --x=0 --y=30); case \"$choice\" in \"⏻ Shutdown\") systemctl poweroff;; \" Reboot\") systemctl reboot;; \"󰤄 Sleep\") systemctl suspend;; \"󰋊 Hibernate\") systemctl hibernate;; esac'",
+  "format": "⏻",
+  "tooltip-format": "Power menu - Click to open"
+},
+  
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": "{icon}",
+    "format-icons": {
+      "none": "󰅺",
+      "notification": "󰡟"
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "return-type": "json",
+    "tooltip": false
+  }
+}
